@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEase Pro · Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" data-link class="logo">🛍️ ShopEase <span class="pro-badge">PRO</span></a>
+    <nav class="nav-links">
+      <a href="/" data-link class="nav-link" id="navHome">Home</a>
+      <a href="/products" data-link class="nav-link" id="navProducts">Products</a>
+      <a href="/orders" data-link class="nav-link" id="navOrders">My Orders</a>
+      <a href="/profile" data-link class="nav-link" id="navProfile">Profile</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-container">
+        <input type="text" id="globalSearch" class="header-search" placeholder="Search products…" autocomplete="off" />
+        <span class="search-icon">🔍</span>
+      </div>
+      <button id="loginBtn" class="secondary-btn" style="padding: 8px 16px; border-radius: 20px;">Login</button>
+      <div id="userProfile" style="display:none; align-items:center; gap:8px;">
+        <span id="userEmail" style="font-weight:600; font-size:0.9rem; color:var(--text-muted)"></span>
+        <button id="logoutBtn" class="remove-btn" style="font-size:0.9rem">Logout</button>
+      </div>
+      <button id="wishlistBtn" class="icon-btn" title="Wishlist">❤️ <span id="wishlistCount" class="badge">0</span></button>
+      <button id="cartBtn" class="icon-btn" title="Cart">🛒 <span id="cartCount" class="badge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="app-outlet"></main>
+
+<footer class="site-footer">
+  <div class="footer-inner"><p>© 2025 ShopEase Pro · Built with Vanilla JS + Firebase</p></div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal-overlay">
+  <div class="modal-content" style="background:var(--card); padding:32px; border-radius:16px; width:100%; max-width:400px; position:relative;">
+    <button class="icon-close" id="closeAuthModal" style="position:absolute; right:16px; top:16px;">✕</button>
+    <h2 style="margin-bottom:16px">Sign In / Sign Up</h2>
+    <input type="email" id="authEmail" placeholder="Email" style="width:100%; padding:12px; margin-bottom:12px; border:1px solid var(--border); border-radius:8px;" />
+    <input type="password" id="authPassword" placeholder="Password (min 6 chars)" style="width:100%; padding:12px; margin-bottom:16px; border:1px solid var(--border); border-radius:8px;" />
+    <button id="emailLoginBtn" class="primary-btn" style="width:100%; margin-bottom:12px;">Login / Sign Up</button>
+    <button id="googleLoginBtn" class="secondary-btn" style="width:100%;">Continue with Google</button>
+    <p id="authError" style="color:var(--danger); font-size:0.85rem; margin-top:12px; text-align:center;"></p>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="drawer">
+  <div class="drawer-header"><h2>Your Cart</h2><button id="closeCart" class="icon-close">✕</button></div>
+  <div id="cartItems" class="drawer-items"></div>
+  <div class="drawer-footer">
+    <div class="drawer-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <button id="checkoutBtn" class="primary-btn">Checkout</button>
+  </div>
+</div>
+
+<!-- WISHLIST DRAWER -->
+<div id="wishlistDrawer" class="drawer">
+  <div class="drawer-header"><h2>Your Wishlist</h2><button id="closeWishlist" class="icon-close">✕</button></div>
+  <div id="wishlistItems" class="drawer-items"></div>
+</div>
+
+<div id="drawerOverlay" class="drawer-overlay"></div>
+<div id="toast" class="toast"></div>
+<script type="module" src="script.js"></script>
+</body>
+</html>
